@@ -1,0 +1,262 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Container für App-Inhalt */
+.app-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Zentrierte Suche */
+.search-section {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+/* Zentriertes Formular */
+.user-form {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr 2fr auto; /* Vorname | Nachname | E-Mail | Button */
+  justify-content: center;
+}
+
+.user-form input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+/* Tabelle */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+thead {
+  background: #f0f0f0;
+}
+
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+tr:hover td {
+  background: #fafafa;
+}
+
+/* Klickbare Tabellenzeile */
+tr.clickable:hover {
+  cursor: pointer;
+}
+
+/* Buttons */
+button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #eee;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover:not(:disabled) {
+  background: #ddd;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button + button {
+  margin-left: 4px;
+}
+
+/* Inputs */
+input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #888;
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+}
+
+/* Snackbar (unten rechts) */
+.snackbar {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+
+  min-width: 260px;
+  max-width: 90vw;
+  padding: 12px 14px;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #fff;
+
+  background-color: #333; /* wird von Typen überschrieben */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  transform: translateY(8px);
+}
+
+.snackbar.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Einheitliche Buttons */
+button,
+.button {
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Button-Varianten */
+.btn-primary {
+  background: #4a90e2;
+  border-color: #357ab7;
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #357ab7;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  border-color: #c0392b;
+  color: #fff;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c0392b;
+}
+
+/* Snackbar Varianten */
+.snackbar.info  { background-color: #333; }
+.snackbar.success { background-color: #2e7d32; } /* grün */
+.snackbar.error { background-color: #c62828; }   /* rot */
+
+/* Modal Confirm */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 18px;
+  min-width: 300px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.modal-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.modal-card p { margin: 0 0 12px; color: #444; }
+
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+.modal-actions .btn-danger { background: #e74c3c; border-color: #c0392b; color: #fff; }
+.modal-actions .btn-danger:hover:not(:disabled) { background: #c0392b; }
+
+/* Aktionen in der Tabelle rechtsbündig */
+td.actions {
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .user-form {
+    grid-template-columns: 1fr; /* untereinander */
+  }
+}
+
+.field-error {
+  font-size: 0.875rem;
+  color: #c62828; /* rot */
+  margin-top: 4px;
+}
+
+.input-invalid {
+  border: 1px solid #c62828 !important;
+  outline: none;
+}
+
+.input-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(198,40,40,0.15);
+}
+
+
+.field-hint {
+  font-size: 0.875rem;
+  color: #2e7d32; /* grün */
+  margin-top: 4px;
+}
+
+.input-valid {
+  border: 1px solid #2e7d32 !important;
+  outline: none;
+}
+
+.input-valid:focus {
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+/* Sortierbare Tabellen-Header */
+.th-sort {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.th-sort:hover {
+  text-decoration: underline;
+}
